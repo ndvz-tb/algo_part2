@@ -1,19 +1,22 @@
-n, w, h = map(int, input().split())
-
-def can_fit(side):
+def can_fit(side, w, h, n):
     return (side // w) * (side // h) >= n
 
-left = 0
-right = 1
+def main():
+    n, w, h = map(int, input().split())
 
-while not can_fit(right):
-    right *= 2
+    left = 0
+    right = 1
 
-while left + 1 < right:
-    mid = (left + right) // 2
-    if can_fit(mid):
-        right = mid
-    else:
-        left = mid
+    while not can_fit(right, w, h, n):
+        right *= 2
 
-print(right)
+    while left + 1 < right:
+        mid = (left + right) // 2
+        if can_fit(mid, w, h, n):
+            right = mid
+        else:
+            left = mid
+
+    print(right)
+
+main()
