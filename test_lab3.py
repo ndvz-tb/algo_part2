@@ -5,11 +5,6 @@ class TestBinaryTreeBalance(unittest.TestCase):
 
     def test_balanced_tree_from_image(self):
         """Тест дерева з умови задачі"""
-        #       1
-        #      / \
-        #     2   3
-        #    / \
-        #   4   5
         root = BinaryTree(1)
         root.left = BinaryTree(2)
         root.right = BinaryTree(3)
@@ -19,21 +14,13 @@ class TestBinaryTreeBalance(unittest.TestCase):
 
     def test_balanced_tree_simple(self):
         """Тест простого збалансованого дерева"""
-        #       3
-        #      / \
-        #     9  20
         root = BinaryTree(3)
         root.left = BinaryTree(9)
         root.right = BinaryTree(20)
         self.assertTrue(is_tree_balanced(root))
 
     def test_unbalanced_tree_left_heavy(self):
-        """Тест незбалансованого дерева (вліво)"""
-        #       1
-        #      / 
-        #     2   
-        #    / 
-        #   3   
+        """Тест незбалансованого дерева (вліво)"""  
         root = BinaryTree(1)
         root.left = BinaryTree(2)
         root.left.left = BinaryTree(3)
@@ -41,11 +28,6 @@ class TestBinaryTreeBalance(unittest.TestCase):
 
     def test_unbalanced_tree_right_heavy(self):
         """Тест незбалансованого дерева (вправо)"""
-        #       1
-        #        \
-        #         2
-        #          \
-        #           3
         root = BinaryTree(1)
         root.right = BinaryTree(2)
         root.right.right = BinaryTree(3)
