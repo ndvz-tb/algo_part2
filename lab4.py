@@ -222,3 +222,71 @@ class RedBlackPriorityQueue:
             self._print_inorder(node.left)
             print(f"[{node.value} (пріоритет {node.priority})]", end=" ")
             self._print_inorder(node.right)
+
+    def get_min(self):
+        if self.root == self.NIL:
+            return None
+        current = self.root
+        while current.right != self.NIL:
+            current = current.right
+        return current.value, current.priority
+
+    def clear(self):
+        self.root = self.NIL
+
+
+def main():
+    todo_list = RedBlackPriorityQueue()
+    
+    while True:
+        print("1 - Додати завдання")
+        print("2 - Показати список")
+        print("3 - Виконати найважливіше")
+        print("4 - Знайти найменш важливе")
+        print("5 - Очистити список")
+        print("6 - Вийти")
+        
+        choice = input("Вибір: ")
+        
+        if choice == '1':
+            try:
+                priority = int(input("Пріоритет: "))
+                task = input("Завдання: ")
+                todo_list.insert(task, priority)
+                print(f"Додано: {task} ({priority})")
+            except ValueError:
+                print("Пріоритет має бути числом")
+                
+        elif choice == '2':
+            if todo_list.peek() is None:
+                print("Список порожній")
+            else:
+                todo_list.print_queue()
+                
+        elif choice == '3':
+            result = todo_list.extract_max()
+            if result:
+                task, priority = result
+                print(f"Виконано: {task} ({priority})")
+            else:
+                print("Список порожній")
+                
+        elif choice == '4':
+            result = todo_list.get_min()
+            if result:
+                print(f"Найменш важливе: {result[0]} ({result[1]})")
+            else:
+                print("Список порожній")
+                
+        elif choice == '5':
+            todo_list.clear()
+            print("Список очищено")
+            
+        elif choice == '6':
+            break
+            
+        else:
+            print("Невідома команда")
+
+if __name__ == "__main__":
+    main()
