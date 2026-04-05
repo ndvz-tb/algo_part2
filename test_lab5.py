@@ -4,7 +4,6 @@ from lab5 import get_min_knight_moves
 class TestKnightMoves(unittest.TestCase):
 
     def test_same_position(self):
-        # Додали 8 першим аргументом
         self.assertEqual(get_min_knight_moves(8, (0, 0), (0, 0)), 0)
 
     def test_one_move(self):
