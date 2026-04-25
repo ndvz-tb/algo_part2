@@ -5,7 +5,6 @@ class TestBeerParty(unittest.TestCase):
     
     def test_example_1(self):
         result = get_min_beers(2, 2, "YNNY")
-        # Очікуємо, що результат буде 2
         self.assertEqual(result, 2)
 
     def test_example_2(self):
